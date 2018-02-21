@@ -21,15 +21,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        init(this);
+        init();
 
 //        isAppInstalled();
 
 
     }
 
-    public void init(Context context) {
-        if (isAppInstalled(context, "com.android.settings")) {
+    public void init() {
+        if (isAppInstalled( "com.android.settings")) {
 //            Intent intent=new Intent(Intent.ACTION_VIEW);
 //            intent.addCategory(Intent.CATEGORY_BROWSABLE);
 //            intent.setData(Uri.parse("http://u.androidgame-store.com/new/game1/4/110904/com.android.chrome-49.0.2623.91-262309101.apk?f=baidu_1"));//复制的百度下载链接
@@ -47,10 +47,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private boolean isAppInstalled(Context context, String packageName) {
+    private boolean isAppInstalled(String packageName) {
         PackageInfo packageInfo;
         try {
-            packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+//            packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+            packageInfo = getPackageManager().getPackageInfo(packageName, 0);
             Log.v("isAppInstalled", String.valueOf(packageInfo));
         } catch (PackageManager.NameNotFoundException e) {
             // TODO Auto-generated catch block
